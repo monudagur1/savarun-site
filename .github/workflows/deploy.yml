@@ -35,3 +35,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./out
           cname: www.savarun.com
+          enable_jekyll: false

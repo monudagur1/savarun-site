@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { COMPANY } from '@/lib/constants';
 
 export function Hero() {
   return (
@@ -9,7 +10,7 @@ export function Hero() {
           style={{ animationDelay: '0.4s', opacity: 0 }}
         >
           <span className="inline-block h-px w-8 shrink-0 bg-muted" />
-          Launching {new Date().getFullYear() + (new Date().getMonth() >= 6 ? 1 : 0)}
+          Launching {COMPANY.launch}
         </p>
         <h1
           className="animate-fade-up select-none whitespace-nowrap font-display text-[clamp(5.5rem,16vw,16rem)] leading-[0.9] tracking-[0.04em]"
