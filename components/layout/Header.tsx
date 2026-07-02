@@ -20,55 +20,50 @@ export function Header() {
       <div className="flex items-center justify-between gap-4">
         <Link
           href="/"
-          className="animate-fade-in font-display text-2xl tracking-[0.22em] text-fg no-underline"
-          style={{ animationDelay: '0.2s', opacity: 0 }}
+          className="animate-fade-in delay-200 shrink-0 font-display text-2xl tracking-[0.22em] text-fg no-underline"
         >
           SAVARUN<sup className="ml-0.5 font-body text-[0.38em] font-light tracking-normal text-muted">™</sup>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Main">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={cn(
-                'text-[0.72rem] uppercase tracking-[0.2em] text-muted transition-colors hover:text-fg',
-                pathname === link.href && 'text-fg',
-              )}
-            >
-              {link.label}
-            </Link>
-          ))}
+        <div className="hidden items-center gap-8 lg:flex">
+          <nav className="flex items-center gap-8" aria-label="Main">
+            {links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={cn(
+                  'text-[0.72rem] uppercase tracking-[0.2em] text-muted transition-colors hover:text-fg',
+                  pathname === link.href && 'text-fg',
+                )}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+          <span className="animate-fade-in delay-400 border border-rule px-[1.1em] py-[0.45em] text-[0.72rem] uppercase tracking-[0.2em] text-muted">
+            Fashion Intelligence
+          </span>
           <Link href="/waitlist/" className="cta-btn text-[0.72rem]">
             Join Waitlist
           </Link>
-        </nav>
-
-        <div className="flex items-center gap-3 md:hidden">
-          <span className="animate-fade-in border border-rule px-[1.1em] py-[0.45em] text-[0.72rem] uppercase tracking-[0.2em] text-muted">
-            Fashion Intelligence
-          </span>
-          <button
-            type="button"
-            className="border border-rule px-3 py-2 text-[0.65rem] uppercase tracking-[0.2em] text-fg"
-            aria-expanded={open}
-            aria-controls="mobile-menu"
-            aria-label={open ? 'Close menu' : 'Open menu'}
-            onClick={() => setOpen(!open)}
-          >
-            {open ? 'Close' : 'Menu'}
-          </button>
         </div>
 
-        <span className="hidden animate-fade-in border border-rule px-[1.1em] py-[0.45em] text-[0.72rem] uppercase tracking-[0.2em] text-muted md:inline-block">
-          Fashion Intelligence
-        </span>
+        <button
+          type="button"
+          className="border border-rule px-3 py-2 text-[0.65rem] uppercase tracking-[0.2em] text-fg lg:hidden"
+          aria-expanded={open}
+          aria-controls="mobile-menu"
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          onClick={() => setOpen(!open)}
+        >
+          {open ? 'Close' : 'Menu'}
+        </button>
       </div>
 
       {open && (
         <nav
           id="mobile-menu"
-          className="mt-4 flex flex-col gap-4 border-t border-rule pt-4 md:hidden"
+          className="mt-4 flex flex-col gap-4 border-t border-rule pt-4 lg:hidden"
           aria-label="Mobile"
         >
           {links.map((link) => (

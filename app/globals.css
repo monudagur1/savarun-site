@@ -84,10 +84,25 @@ body {
 }
 
 .animate-fade-up {
+  opacity: 0;
   animation: fadeUp 0.9s ease forwards;
 }
 .animate-fade-in {
+  opacity: 0;
   animation: fadeIn 0.8s ease forwards;
+}
+
+.delay-200 {
+  animation-delay: 0.2s;
+}
+.delay-400 {
+  animation-delay: 0.4s;
+}
+.delay-550 {
+  animation-delay: 0.55s;
+}
+.delay-1000 {
+  animation-delay: 1s;
 }
 
 @media (prefers-reduced-motion: reduce) {
