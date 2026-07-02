@@ -1,12 +1,14 @@
 import type { Metadata } from 'next';
 import { pageMetadata } from '@/lib/metadata';
 import { PageHero } from '@/components/marketing/PageHero';
+import { AppPlatforms } from '@/components/marketing/AppPlatforms';
 import { WaitlistForm } from '@/components/forms/WaitlistForm';
 import { Reveal } from '@/components/motion/Reveal';
+import { APP } from '@/lib/constants';
 
 export const metadata: Metadata = pageMetadata(
-  'Join the Waitlist',
-  'Get early access to SAVARUN™ Fashion Intelligence. Be the first to know when we launch in 2026.',
+  'Early Access',
+  `Get early access to the SAVARUN™ Fashion AI app — launching ${APP.launch} on iOS & Android.`,
 );
 
 export default function WaitlistPage() {
@@ -16,15 +18,18 @@ export default function WaitlistPage() {
       <div className="relative mx-auto w-full max-w-xl">
         <PageHero
           label="Early Access"
-          title="Get early access"
-          description="Be the first to know when SAVARUN™ launches. Early members receive exclusive benefits and launch-day access."
+          title="Get the app first"
+          description="Join the waitlist for beta invites, launch-day access, and exclusive perks when SAVARUN™ drops on the App Store and Play Store."
         />
+        <Reveal delay={0.1}>
+          <AppPlatforms className="mb-8" />
+        </Reveal>
         <Reveal delay={0.15}>
           <WaitlistForm source="waitlist-page" />
         </Reveal>
         <Reveal delay={0.2}>
           <p className="mt-8 text-center text-[0.72rem] uppercase tracking-[0.2em] text-dim">
-            Join others waiting for Fashion Intelligence
+            Launching {APP.launch} · {APP.platforms.join(' & ')}
           </p>
         </Reveal>
       </div>

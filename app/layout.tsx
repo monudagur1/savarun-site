@@ -5,7 +5,7 @@ import { Footer } from '@/components/layout/Footer';
 import { GrainOverlay } from '@/components/effects/GrainOverlay';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { baseMetadata } from '@/lib/metadata';
-import { COMPANY, SITE_URL } from '@/lib/constants';
+import { APP, SITE_URL } from '@/lib/constants';
 import './globals.css';
 
 const bebas = Bebas_Neue({
@@ -30,19 +30,19 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-const organizationSchema = {
+const appSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
+  '@type': 'SoftwareApplication',
   name: 'SAVARUN',
+  applicationCategory: 'LifestyleApplication',
+  operatingSystem: 'iOS, Android',
+  description: APP.description,
   url: SITE_URL,
-  description: 'Fashion Intelligence — Your wardrobe, scored, curated, and elevated by intelligence.',
-  email: COMPANY.email,
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Karauli',
-    addressRegion: 'Rajasthan',
-    postalCode: '322236',
-    addressCountry: 'IN',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'INR',
+    availability: 'https://schema.org/PreOrder',
   },
 };
 
@@ -50,7 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${bebas.variable} ${dmSans.variable}`}>
       <head>
-        <JsonLd data={organizationSchema} />
+        <JsonLd data={appSchema} />
       </head>
       <body className="min-h-screen font-body font-light">
         <GrainOverlay />

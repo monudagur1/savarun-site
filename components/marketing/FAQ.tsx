@@ -10,7 +10,7 @@ export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="px-[5vw] py-24">
+    <section id="faq" className="px-[5vw] py-24">
       <Reveal className="mb-14 border-b border-rule pb-8">
         <span className="section-label">FAQ</span>
         <h2 className="mt-4 font-display text-[clamp(2rem,4vw,3rem)] tracking-[0.04em]">

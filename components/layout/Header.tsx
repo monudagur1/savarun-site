@@ -7,9 +7,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 const links = [
-  { href: '/product/', label: 'Product' },
+  { href: '/product/', label: 'Features' },
   { href: '/about/', label: 'About' },
-  { href: '/contact/', label: 'Contact' },
+  { href: '/contact/', label: 'Support' },
 ];
 
 export function Header() {
@@ -64,10 +64,10 @@ export function Header() {
 
         <div className="hidden items-center gap-6 lg:flex">
           <span className="border border-rule px-4 py-2 text-[0.65rem] uppercase tracking-[0.24em] text-muted">
-            Fashion Intelligence
+            AI App · {new Date().getFullYear() >= 2026 ? '2026' : 'Soon'}
           </span>
           <Link href="/waitlist/" className="cta-btn text-[0.68rem]">
-            Join Waitlist
+            Get Early Access
           </Link>
         </div>
 
@@ -107,7 +107,7 @@ export function Header() {
                 </Link>
               ))}
               <Link href="/waitlist/" className="cta-btn w-fit" onClick={() => setOpen(false)}>
-                Join Waitlist
+                Get Early Access
               </Link>
             </div>
           </motion.nav>

@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import { pageMetadata } from '@/lib/metadata';
-import { COMPANY } from '@/lib/constants';
+import { APP } from '@/lib/constants';
 
 export const metadata: Metadata = pageMetadata(
   'Terms of Service',
-  'SAVARUN™ Terms of Service — terms governing use of our website and waitlist.',
+  'SAVARUN™ Terms of Service — terms for the website and waitlist.',
 );
 
 export default function TermsPage() {
@@ -16,34 +16,32 @@ export default function TermsPage() {
 
       <h2>1. Acceptance</h2>
       <p>
-        By accessing www.savarun.com or joining the SAVARUN™ waitlist, you agree to these Terms of
-        Service.
+        By using savarun.com or joining the SAVARUN™ waitlist, you agree to these Terms of Service.
       </p>
 
-      <h2>2. Waitlist</h2>
+      <h2>2. Waitlist & Early Access</h2>
       <p>
-        Joining the waitlist does not guarantee early access or specific launch dates. We reserve
-        the right to modify launch timelines and waitlist benefits.
+        Joining the waitlist does not guarantee beta access or a specific launch date. We may
+        change timelines, features, or early-access benefits at any time before launch.
       </p>
 
       <h2>3. Intellectual Property</h2>
       <p>
-        SAVARUN™, all content, branding, and materials on this website are owned by {COMPANY.entity}.
-        Unauthorized use is prohibited.
+        SAVARUN™, all app designs, branding, and content on this site are owned by us. Unauthorized
+        use is prohibited.
       </p>
 
-      <h2>4. Limitation of Liability</h2>
+      <h2>4. Pre-Launch Disclaimer</h2>
       <p>
-        This website is provided &quot;as is&quot; during pre-launch. We make no warranties regarding
-        availability or accuracy of pre-launch content.
+        This site describes a product in development. Features, pricing, and availability may change
+        before the app launches on iOS and Android.
       </p>
 
-      <h2>5. Governing Law</h2>
-      <p>These terms are governed by the laws of India. Jurisdiction: Rajasthan, India.</p>
-
-      <h2>6. Contact</h2>
+      <h2>5. Contact</h2>
       <p>
-        {COMPANY.email} · {COMPANY.phone}
+        <a href={`mailto:${APP.supportEmail}`} className="text-fg underline">
+          {APP.supportEmail}
+        </a>
       </p>
     </article>
   );

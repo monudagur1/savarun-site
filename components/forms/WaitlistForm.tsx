@@ -195,7 +195,7 @@ export function WaitlistForm({ source = 'homepage', className }: WaitlistFormPro
                 Joining...
               </>
             ) : (
-              'Join the Waitlist'
+              'Get Early Access'
             )}
           </button>
         </motion.form>

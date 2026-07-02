@@ -1,12 +1,13 @@
 'use client';
 
 import { Reveal } from '@/components/motion/Reveal';
+import { APP } from '@/lib/constants';
 
 const stats = [
-  { value: '2026', label: 'Launch year' },
-  { value: '3', label: 'Core pillars' },
-  { value: '∞', label: 'Outfit combinations' },
-  { value: '100%', label: 'Your data, yours' },
+  { value: APP.launch, label: 'App launch' },
+  { value: 'AI', label: 'Fit scoring' },
+  { value: '2', label: 'Platforms' },
+  { value: '∞', label: 'Outfit combos' },
 ];
 
 export function Stats() {

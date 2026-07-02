@@ -12,9 +12,9 @@ export function Features() {
     <section className="relative px-[5vw] pb-[14vh] pt-[12vh]">
       <Reveal className="mb-16 flex items-end justify-between border-b border-rule pb-8">
         <div>
-          <span className="section-label">Core Features</span>
+          <span className="section-label">App Features</span>
           <h2 className="mt-4 font-display text-[clamp(2rem,4vw,3.5rem)] tracking-[0.04em]">
-            Intelligence, built in
+            Built into the app
           </h2>
         </div>
         <span className="hidden font-display text-[0.85rem] tracking-[0.2em] text-rule md:block">003</span>

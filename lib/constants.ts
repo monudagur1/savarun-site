@@ -1,18 +1,12 @@
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.savarun.com';
 
-export const COMPANY = {
+export const APP = {
   name: 'SAVARUN',
   tagline: 'Fashion Intelligence',
-  email: 'monusherpurdagur@gmail.com',
-  phone: '+91 84010 24176',
-  proprietor: 'Lekhraj Dagur',
-  entity: 'SAVARUN',
-  address: {
-    line1: 'Lekhraj SO Nihal',
-    line2: 'Sherpur, Hindaun City',
-    line3: 'Karauli, Rajasthan 322236',
-    country: 'India',
-  },
+  description:
+    'The AI app that scores your outfits, organises your wardrobe, and elevates how you dress — every day.',
+  supportEmail: 'monusherpurdagur@gmail.com',
   launch: '2026',
   region: 'India',
+  platforms: ['iOS', 'Android'] as const,
 } as const;

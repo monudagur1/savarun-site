@@ -7,7 +7,7 @@ import { Manifesto } from '@/components/marketing/Manifesto';
 import { CTASection } from '@/components/marketing/CTASection';
 import { WaitlistForm } from '@/components/forms/WaitlistForm';
 import { Reveal } from '@/components/motion/Reveal';
-import { COMPANY } from '@/lib/constants';
+import { APP } from '@/lib/constants';
 
 export default function HomePage() {
   return (
@@ -23,11 +23,11 @@ export default function HomePage() {
           <Reveal>
             <span className="section-label">Early Access</span>
             <h2 className="mt-4 font-display text-[clamp(2rem,4vw,3.5rem)] leading-[0.95] tracking-[0.04em]">
-              Be first to experience Fashion Intelligence
+              Be first on the app
             </h2>
             <p className="mt-6 body-text">
-              Join the waitlist for launch updates, early access, and exclusive benefits when SAVARUN™
-              goes live in {COMPANY.launch}.
+              Join the waitlist for launch notifications, beta access, and exclusive perks when
+              SAVARUN™ hits the App Store and Play Store in {APP.launch}.
             </p>
           </Reveal>
           <Reveal delay={0.1}>

@@ -4,12 +4,12 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { Reveal } from '@/components/motion/Reveal';
-import { COMPANY } from '@/lib/constants';
+import { AppPlatforms } from '@/components/marketing/AppPlatforms';
+import { APP } from '@/lib/constants';
 
 export function Hero() {
   return (
     <section className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden">
-      {/* Background layers */}
       <div className="pointer-events-none absolute inset-0 bg-grid-pattern bg-grid opacity-40" />
       <div className="pointer-events-none absolute -left-[20%] top-[10%] h-[500px] w-[500px] rounded-full bg-white/[0.03] blur-[120px] animate-pulse-slow" />
       <div className="pointer-events-none absolute -right-[10%] bottom-[20%] h-[400px] w-[400px] rounded-full bg-white/[0.02] blur-[100px]" />
@@ -17,10 +17,13 @@ export function Hero() {
 
       <div className="relative z-[1] px-[5vw] pb-[3vh]">
         <Reveal>
-          <p className="mb-10 flex items-center gap-4 text-[0.75rem] uppercase tracking-[0.35em] text-muted">
-            <span className="inline-block h-px w-10 bg-gradient-to-r from-muted to-transparent" />
-            Launching {COMPANY.launch}
-          </p>
+          <div className="mb-10 flex flex-wrap items-center gap-4">
+            <p className="flex items-center gap-4 text-[0.75rem] uppercase tracking-[0.35em] text-muted">
+              <span className="inline-block h-px w-10 bg-gradient-to-r from-muted to-transparent" />
+              Fashion AI App
+            </p>
+            <AppPlatforms compact />
+          </div>
         </Reveal>
 
         <Reveal delay={0.1}>
@@ -30,20 +33,23 @@ export function Hero() {
               ™
             </sup>
           </h1>
+          <p className="mt-6 max-w-lg text-[0.72rem] uppercase tracking-[0.32em] text-dim">
+            Launching {APP.launch} · {APP.region}
+          </p>
         </Reveal>
       </div>
 
       <Reveal delay={0.2} className="relative z-[1] px-[5vw]">
         <div className="flex flex-wrap items-end justify-between gap-10 border-t border-rule py-12 pb-[7vh]">
           <p className="max-w-md text-[1.05rem] font-light italic leading-[1.85] tracking-[0.02em] text-muted">
-            Your wardrobe, scored, curated, and elevated by intelligence.
+            Your wardrobe, scored and curated by AI.
             <br className="hidden sm:block" />
-            Dress with intention — every single day.
+            Dress smarter — from your phone.
           </p>
 
           <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
             <Link href="/waitlist/" className="cta-btn group">
-              Join the Waitlist
+              Get Early Access
               <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
           </motion.div>

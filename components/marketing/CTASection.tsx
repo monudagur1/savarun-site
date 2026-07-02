@@ -11,8 +11,8 @@ interface CTASectionProps {
 }
 
 export function CTASection({
-  headline = 'Ready to dress with intention?',
-  subheadline = 'Join the waitlist for early access and exclusive launch updates.',
+  headline = 'Ready for smarter style?',
+  subheadline = 'Get early access to the Fashion AI app before launch.',
 }: CTASectionProps) {
   return (
     <section className="relative overflow-hidden px-[5vw] py-28">
@@ -26,7 +26,7 @@ export function CTASection({
         <p className="mx-auto mb-12 max-w-lg body-text">{subheadline}</p>
         <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="inline-block">
           <Link href="/waitlist/" className="cta-btn group">
-            Join the Waitlist
+            Get Early Access
             <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </Link>
         </motion.div>

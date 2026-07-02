@@ -5,4 +5,4 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export { SITE_URL, COMPANY } from './constants';
+export { SITE_URL, APP } from './constants';

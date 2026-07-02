@@ -2,42 +2,42 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { pageMetadata } from '@/lib/metadata';
 import { values } from '@/lib/content';
-import { COMPANY } from '@/lib/constants';
+import { APP } from '@/lib/constants';
 import { PageHero } from '@/components/marketing/PageHero';
+import { AppPlatforms } from '@/components/marketing/AppPlatforms';
 import { CTASection } from '@/components/marketing/CTASection';
 import { Reveal } from '@/components/motion/Reveal';
 
 export const metadata: Metadata = pageMetadata(
   'About',
-  `Learn about SAVARUN™ — Fashion Intelligence built in ${COMPANY.region}. Launching ${COMPANY.launch}.`,
+  `SAVARUN™ is a Fashion AI app for iOS & Android — launching ${APP.launch}.`,
 );
 
 export default function AboutPage() {
   return (
     <>
       <PageHero
-        label="About"
-        title="We're building the future of fashion intelligence"
-        description="SAVARUN™ was born from a simple observation: most people own more clothes than they know how to use. We are building the platform that scores, curates, and elevates your personal style."
+        label="About the App"
+        title="Fashion intelligence, in your pocket"
+        description="Most people own more clothes than they know how to use. SAVARUN™ is the AI app that unlocks your wardrobe — scoring outfits, surfacing pairings, and helping you dress with intention."
       />
 
       <section className="border-y border-rule px-[5vw] py-24">
         <Reveal className="mx-auto max-w-3xl space-y-6 body-text">
           <p>
-            Wardrobes are full of potential — but without intelligence, that potential stays hidden.
-            We combine your wardrobe data, visual analysis, and AI scoring to help you dress with
-            intention every day.
+            Built for {APP.platforms.join(' and ')}, SAVARUN combines visual AI, wardrobe sync,
+            and real-time fit scoring into one seamless experience. No spreadsheets. No guesswork.
+            Just smarter style, every day.
           </p>
           <p>
-            Launching in {COMPANY.launch} from {COMPANY.region}, SAVARUN™ is fashion intelligence
-            for everyone who believes style is knowledge, not accumulation.
+            Launching in {APP.launch}, starting in {APP.region} — with a global rollout to follow.
           </p>
         </Reveal>
       </section>
 
       <section className="px-[5vw] py-24">
         <Reveal className="mb-14 border-b border-rule pb-8">
-          <span className="section-label">Values</span>
+          <span className="section-label">Built on</span>
         </Reveal>
         <div className="grid gap-6 md:grid-cols-3">
           {values.map((v, i) => (
@@ -51,30 +51,23 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="grid items-end gap-12 border-y border-rule px-[5vw] py-24 md:grid-cols-2">
+      <section className="grid items-center gap-12 border-y border-rule px-[5vw] py-24 md:grid-cols-2">
         <Reveal>
           <h2 className="font-display text-[clamp(2rem,5vw,4rem)] leading-[0.98] tracking-[0.02em]">
-            Style is not
+            Coming to
             <br />
-            what you own.
-            <br />
-            <span className="text-muted">It is what you know.</span>
+            <span className="text-muted">your home screen.</span>
           </h2>
         </Reveal>
-        <Reveal delay={0.1} className="body-text">
-          <p className="mb-4">
-            <strong className="font-normal text-fg">Entity:</strong> {COMPANY.entity}
-          </p>
-          <p className="mb-6">
-            <strong className="font-normal text-fg">Proprietor:</strong> {COMPANY.proprietor}
-          </p>
-          <Link href="/contact/" className="inline-flex items-center gap-2 text-fg underline">
-            Get in touch →
+        <Reveal delay={0.1}>
+          <AppPlatforms />
+          <Link href="/waitlist/" className="mt-8 inline-flex items-center gap-2 text-fg underline">
+            Join the waitlist →
           </Link>
         </Reveal>
       </section>
 
-      <CTASection />
+      <CTASection headline="Ready for smarter style?" subheadline="Get early access to the app before launch." />
     </>
   );
 }

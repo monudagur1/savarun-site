@@ -1,7 +1,7 @@
 'use client';
 
 import { Reveal } from '@/components/motion/Reveal';
-import { COMPANY } from '@/lib/constants';
+import { APP } from '@/lib/constants';
 
 export function Manifesto() {
   return (
@@ -10,28 +10,21 @@ export function Manifesto() {
       <div className="relative grid items-end gap-16 md:grid-cols-[1.2fr_0.8fr]">
         <Reveal>
           <h2 className="font-display text-[clamp(2.4rem,5.5vw,6rem)] leading-[0.95] tracking-[0.02em]">
-            Style is not
+            Not another
             <br />
-            what you own.
+            closet app.
             <br />
             <span className="bg-gradient-to-r from-muted to-dim bg-clip-text text-transparent">
-              It is what you know.
+              A fashion brain.
             </span>
           </h2>
         </Reveal>
         <Reveal delay={0.15} className="md:text-right">
           <p className="text-[0.78rem] uppercase leading-[2.2] tracking-[0.22em] text-muted">
-            SAVARUN™ — Fashion Intelligence App
+            SAVARUN™ for {APP.platforms.join(' & ')}
             <br />
-            Launching {COMPANY.launch} · {COMPANY.region}
+            Launching {APP.launch}
           </p>
-          <div className="mt-8 flex gap-8 md:justify-end">
-            {['Intention', 'Intelligence', 'Simplicity'].map((word) => (
-              <span key={word} className="text-[0.65rem] uppercase tracking-[0.2em] text-dim">
-                {word}
-              </span>
-            ))}
-          </div>
         </Reveal>
       </div>
     </section>

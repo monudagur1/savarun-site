@@ -3,13 +3,14 @@
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import { Reveal } from '@/components/motion/Reveal';
-import { COMPANY } from '@/lib/constants';
+import { AppPlatforms } from '@/components/marketing/AppPlatforms';
+import { APP } from '@/lib/constants';
 
 const footerLinks = [
-  { href: '/product/', label: 'Product' },
+  { href: '/product/', label: 'Features' },
   { href: '/about/', label: 'About' },
-  { href: '/waitlist/', label: 'Waitlist' },
-  { href: '/contact/', label: 'Contact' },
+  { href: '/waitlist/', label: 'Early Access' },
+  { href: '/contact/', label: 'Support' },
   { href: '/privacy/', label: 'Privacy' },
   { href: '/terms/', label: 'Terms' },
 ];
@@ -26,19 +27,20 @@ export function Footer() {
             <sup className="ml-1 font-body text-[0.3em] font-light tracking-normal text-muted">™</sup>
           </Link>
           <p className="mt-4 max-w-xs text-[0.75rem] uppercase leading-[2] tracking-[0.2em] text-muted">
-            Fashion Intelligence — Est. {COMPANY.launch}
+            {APP.tagline} — AI app for iOS & Android
           </p>
+          <AppPlatforms className="mt-6" compact />
           <Link
             href="/waitlist/"
             className="mt-8 inline-flex items-center gap-2 text-[0.72rem] uppercase tracking-[0.24em] text-fg transition-opacity hover:opacity-70"
           >
-            Join the Waitlist
+            Get Early Access
             <ArrowUpRight className="h-3.5 w-3.5" />
           </Link>
         </Reveal>
 
         <Reveal delay={0.1}>
-          <p className="mb-6 text-[0.65rem] uppercase tracking-[0.28em] text-dim">Navigate</p>
+          <p className="mb-6 text-[0.65rem] uppercase tracking-[0.28em] text-dim">Explore</p>
           <nav className="flex flex-col gap-3" aria-label="Footer">
             {footerLinks.map((link) => (
               <Link
@@ -53,32 +55,25 @@ export function Footer() {
         </Reveal>
 
         <Reveal delay={0.15}>
-          <p className="mb-6 text-[0.65rem] uppercase tracking-[0.28em] text-dim">Contact</p>
+          <p className="mb-6 text-[0.65rem] uppercase tracking-[0.28em] text-dim">Support</p>
           <div className="space-y-3 text-[0.88rem] font-light text-muted">
-            <p>{COMPANY.proprietor}</p>
-            <a href={`mailto:${COMPANY.email}`} className="block text-fg transition-opacity hover:opacity-70">
-              {COMPANY.email}
+            <p>Questions, feedback, or press — reach the team anytime.</p>
+            <a
+              href={`mailto:${APP.supportEmail}`}
+              className="block text-fg transition-opacity hover:opacity-70"
+            >
+              {APP.supportEmail}
             </a>
-            <a href={`tel:${COMPANY.phone.replace(/\s/g, '')}`} className="block transition-opacity hover:opacity-70">
-              {COMPANY.phone}
-            </a>
-            <address className="not-italic leading-[1.9]">
-              {COMPANY.address.line2}
-              <br />
-              {COMPANY.address.line3}
-              <br />
-              {COMPANY.address.country}
-            </address>
           </div>
         </Reveal>
       </div>
 
       <Reveal delay={0.2} className="mt-16 flex flex-wrap items-center justify-between gap-4 border-t border-rule pt-8">
         <p className="text-[0.72rem] uppercase tracking-[0.16em] text-dim">
-          © {new Date().getFullYear()} SAVARUN™ — All Rights Reserved
+          © {new Date().getFullYear()} SAVARUN™
         </p>
         <p className="text-[0.72rem] tracking-[0.12em] text-rule">
-          Sole Proprietorship — Registered in India
+          Launching {APP.launch} · {APP.region}
         </p>
       </Reveal>
     </footer>

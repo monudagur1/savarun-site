@@ -3,60 +3,61 @@ export const features = [
     index: '01 / 03',
     title: 'Intelligent Outfit Grid',
     description:
-      'A visual wardrobe matrix that organises every piece you own into a living editorial. Browse, combine, and discover pairings your closet was hiding.',
+      'Your entire wardrobe in a visual matrix — every piece indexed, searchable, and ready to combine. Discover pairings your closet was hiding.',
     href: '/product/',
   },
   {
     index: '02 / 03',
-    title: 'Seamless Gallery Integration',
+    title: 'Gallery Sync',
     description:
-      'Import looks directly from your photo library. SAVARUN™ reads context, extracts garments, and catalogs them instantly — zero friction between camera roll and closet.',
+      'Import looks from your camera roll. The app reads context, extracts garments, and builds your digital closet — zero manual entry.',
     href: '/product/',
   },
   {
     index: '03 / 03',
     title: 'AI Fit Scoring',
     description:
-      'A proprietary algorithm evaluates proportion, colour harmony, and occasion fit — returning a precise score with actionable style notes so every outfit is deliberate.',
+      'Real-time scoring on proportion, colour harmony, and occasion fit — with actionable notes so every outfit you wear is deliberate.',
     href: '/product/',
   },
 ] as const;
 
 export const tickerItems = [
-  'OUTFIT INTELLIGENCE',
+  'FASHION AI',
   'FIT SCORE',
-  'GALLERY INTEGRATION',
+  'WARDROBE SYNC',
+  'OUTFIT ENGINE',
+  'GALLERY IMPORT',
   'DAILY STYLING',
-  'WARDROBE CURATION',
   'SAVARUN™',
-  'FASHION INTELLIGENCE',
+  'iOS + ANDROID',
 ] as const;
 
 export const faqItems = [
   {
-    question: 'When will SAVARUN™ launch?',
+    question: 'When does the app launch?',
     answer:
-      'We are launching in 2026. Join the waitlist to be the first to know when we go live and receive early access.',
+      'SAVARUN™ launches in 2026 on iOS and Android. Join the waitlist to get early access and launch-day notifications.',
   },
   {
     question: 'What is Fashion Intelligence?',
     answer:
-      'Fashion Intelligence is our approach to personal style — combining your wardrobe data, visual analysis, and AI scoring to help you dress with intention every day.',
+      'It is how SAVARUN thinks about style — combining your wardrobe data, visual AI, and fit scoring to help you dress with intention every day.',
   },
   {
-    question: 'Is SAVARUN™ available in India?',
+    question: 'Which platforms are supported?',
     answer:
-      'Yes. SAVARUN™ is built in India and launching first for Indian users in 2026.',
+      'The app is built for iOS and Android. We are launching first in India, with global rollout to follow.',
   },
   {
-    question: 'How much will it cost?',
+    question: 'How much will the app cost?',
     answer:
-      'Pricing will be announced at launch. Waitlist members receive early access and exclusive launch benefits.',
+      'Pricing will be announced at launch. Waitlist members get early access and exclusive launch perks.',
   },
   {
-    question: 'Is my data secure?',
+    question: 'Is my wardrobe data private?',
     answer:
-      'Privacy and security are foundational. Your photos and wardrobe data remain yours. Full security practices will be published before launch.',
+      'Yes. Your photos and closet data stay on your terms. Privacy and on-device processing are core to how we build SAVARUN™.',
   },
 ] as const;
 
@@ -67,10 +68,10 @@ export const values = [
   },
   {
     title: 'Intelligence',
-    description: 'Data and AI amplify taste — they do not replace it.',
+    description: 'AI amplifies your taste — it never replaces it.',
   },
   {
     title: 'Simplicity',
-    description: 'Powerful tools with zero friction between you and your closet.',
+    description: 'Powerful styling tools with zero friction.',
   },
 ] as const;
