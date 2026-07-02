@@ -25,7 +25,7 @@ export function Features() {
           const Icon = icons[i] ?? Sparkles;
           return (
             <Reveal key={feature.title} delay={i * 0.1}>
-              <article className="feature-card glass-panel h-full">
+              <article className="group feature-card glass-panel h-full">
                 <div className="mb-8 flex items-center justify-between">
                   <span className="font-display text-[0.78rem] tracking-[0.24em] text-rule">
                     {feature.index}

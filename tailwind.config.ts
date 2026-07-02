@@ -19,7 +19,7 @@ const config: Config = {
       },
       animation: {
         ticker: 'ticker 40s linear infinite',
-        pulse-slow: 'pulse-slow 8s ease-in-out infinite',
+        'pulse-slow': 'pulse-slow 8s ease-in-out infinite',
         shimmer: 'shimmer 2.5s linear infinite',
       },
       keyframes: {
