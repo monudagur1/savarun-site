@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Bebas_Neue, DM_Sans } from 'next/font/google';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { GrainOverlay } from '@/components/effects/GrainOverlay';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { baseMetadata } from '@/lib/metadata';
 import { COMPANY, SITE_URL } from '@/lib/constants';
@@ -24,7 +25,7 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = baseMetadata;
 
 export const viewport: Viewport = {
-  themeColor: '#0E0E0E',
+  themeColor: '#0A0A0A',
   width: 'device-width',
   initialScale: 1,
 };
@@ -52,6 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <JsonLd data={organizationSchema} />
       </head>
       <body className="min-h-screen font-body font-light">
+        <GrainOverlay />
         <a href="#main-content" className="skip-link">
           Skip to content
         </a>

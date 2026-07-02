@@ -1,29 +1,38 @@
 import { Hero } from '@/components/marketing/Hero';
 import { Ticker } from '@/components/marketing/Ticker';
+import { Stats } from '@/components/marketing/Stats';
 import { Features } from '@/components/marketing/Features';
+import { HowItWorks } from '@/components/marketing/HowItWorks';
 import { Manifesto } from '@/components/marketing/Manifesto';
 import { CTASection } from '@/components/marketing/CTASection';
 import { WaitlistForm } from '@/components/forms/WaitlistForm';
+import { Reveal } from '@/components/motion/Reveal';
+import { COMPANY } from '@/lib/constants';
 
 export default function HomePage() {
   return (
     <>
       <Hero />
       <Ticker />
+      <Stats />
       <Features />
-      <section className="border-b border-rule px-[5vw] py-20">
-        <div className="mx-auto grid max-w-5xl gap-12 md:grid-cols-2 md:items-center">
-          <div>
+      <HowItWorks />
+      <section className="relative px-[5vw] py-24">
+        <div className="pointer-events-none absolute inset-0 bg-grid-pattern bg-grid opacity-20" />
+        <div className="relative mx-auto grid max-w-6xl gap-16 lg:grid-cols-2 lg:items-center">
+          <Reveal>
             <span className="section-label">Early Access</span>
-            <h2 className="mt-4 font-display text-[clamp(2rem,4vw,3.5rem)] leading-[1] tracking-[0.04em]">
+            <h2 className="mt-4 font-display text-[clamp(2rem,4vw,3.5rem)] leading-[0.95] tracking-[0.04em]">
               Be first to experience Fashion Intelligence
             </h2>
             <p className="mt-6 body-text">
               Join the waitlist for launch updates, early access, and exclusive benefits when SAVARUN™
-              goes live in {new Date().getFullYear() >= 2026 ? '2026' : '2026'}.
+              goes live in {COMPANY.launch}.
             </p>
-          </div>
-          <WaitlistForm source="homepage-inline" />
+          </Reveal>
+          <Reveal delay={0.1}>
+            <WaitlistForm source="homepage-inline" />
+          </Reveal>
         </div>
       </section>
       <Manifesto />
