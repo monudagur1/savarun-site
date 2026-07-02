@@ -1,7 +1,3 @@
-node_modules/
-.next/
-out/
-.env*.local
-.vercel
-.DS_Store
-*.log
+# Static site files served by GitHub Pages.
+docs/
+public/
