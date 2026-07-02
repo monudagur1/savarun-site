@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0e0e0e;
+  --fg: #f4f4f4;
+  --muted: #555555;
+  --dim: #2a2a2a;
+  --rule: #1c1c1c;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--dim);
+}
+
+::selection {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.75rem 1rem;
+  background: var(--fg);
+  color: var(--bg);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.9s ease forwards;
+}
+.animate-fade-in {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer components {
+  .section-label {
+    @apply text-[0.78rem] uppercase tracking-[0.3em] text-muted;
+  }
+
+  .page-hero-title {
+    @apply font-display text-[clamp(2.5rem,8vw,5.5rem)] leading-[0.95] tracking-[0.04em];
+  }
+
+  .body-text {
+    @apply text-base font-light leading-[1.85] tracking-[0.01em] text-muted;
+  }
+
+  .cta-btn {
+    @apply relative inline-flex cursor-pointer items-center gap-4 whitespace-nowrap border-0 bg-fg px-[2.8em] py-[1.2em] text-[0.78rem] uppercase tracking-[0.25em] text-bg transition-colors duration-300;
+  }
+
+  .cta-btn::before {
+    content: '';
+    @apply pointer-events-none absolute inset-0 border border-fg;
+    transform: translate(5px, 5px);
+    transition: transform 0.3s ease;
+  }
+
+  .cta-btn:hover {
+    @apply bg-transparent text-fg;
+  }
+
+  .cta-btn:hover::before {
+    transform: translate(0, 0);
+  }
+
+  .cta-btn-outline {
+    @apply relative inline-flex cursor-pointer items-center gap-4 whitespace-nowrap border border-rule bg-transparent px-[2.8em] py-[1.2em] text-[0.78rem] uppercase tracking-[0.25em] text-fg transition-colors duration-300 hover:border-fg;
+  }
+
+  .input-field {
+    @apply w-full border border-rule bg-bg px-4 py-3 font-body text-base font-light text-fg outline-none transition-colors placeholder:text-dim focus:border-fg;
+  }
+
+  .legal-prose h2 {
+    @apply mb-4 mt-10 font-display text-2xl tracking-[0.05em];
+  }
+  .legal-prose p {
+    @apply body-text mb-4;
+  }
+  .legal-prose ul {
+    @apply mb-4 list-disc pl-6 text-muted;
+  }
+  .legal-prose li {
+    @apply mb-2 font-light leading-relaxed;
+  }
+}

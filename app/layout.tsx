@@ -1,0 +1,64 @@
+import type { Metadata, Viewport } from 'next';
+import { Bebas_Neue, DM_Sans } from 'next/font/google';
+import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
+import { JsonLd } from '@/components/seo/JsonLd';
+import { baseMetadata } from '@/lib/metadata';
+import { COMPANY, SITE_URL } from '@/lib/constants';
+import './globals.css';
+
+const bebas = Bebas_Neue({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-bebas',
+  display: 'swap',
+});
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ['300', '400', '500'],
+  variable: '--font-dm-sans',
+  display: 'swap',
+});
+
+export const metadata: Metadata = baseMetadata;
+
+export const viewport: Viewport = {
+  themeColor: '#0E0E0E',
+  width: 'device-width',
+  initialScale: 1,
+};
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'SAVARUN',
+  url: SITE_URL,
+  description: 'Fashion Intelligence — Your wardrobe, scored, curated, and elevated by intelligence.',
+  email: COMPANY.email,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Karauli',
+    addressRegion: 'Rajasthan',
+    postalCode: '322236',
+    addressCountry: 'IN',
+  },
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" className={`${bebas.variable} ${dmSans.variable}`}>
+      <head>
+        <JsonLd data={organizationSchema} />
+      </head>
+      <body className="min-h-screen font-body font-light">
+        <a href="#main-content" className="skip-link">
+          Skip to content
+        </a>
+        <Header />
+        <main id="main-content">{children}</main>
+        <Footer />
+      </body>
+    </html>
+  );
+}
