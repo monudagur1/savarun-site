@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { enrichTrendsWithImages } from './trend-images';
 
 export const fashionTrendSchema = z.object({
   title: z.string().min(1),
@@ -6,6 +6,9 @@ export const fashionTrendSchema = z.object({
   summary: z.string().min(1),
   colors: z.array(z.string()).min(1).max(5),
   context: z.string().min(1),
+  imageQuery: z.string().min(1).optional(),
+  imageUrl: z.string().url().optional(),
+  imageSource: z.enum(['pexels', 'generated']).optional(),
 });
 
 export const trendsResponseSchema = z.object({
@@ -52,6 +55,7 @@ Requirements:
 - For Global: include diverse international references without claiming specific brand partnerships
 - Be specific but honest — describe general directional trends, not fabricated statistics or fake press quotes
 - Use contemporary language; avoid claiming real-time runway or sales data
+- For each trend include imageQuery: 4-8 words for a fashion photo search (garment, setting, mood — no brand names)
 
 Return ONLY valid JSON in this shape:
 {
@@ -62,7 +66,8 @@ Return ONLY valid JSON in this shape:
       "category": "string",
       "summary": "2 sentences max",
       "colors": ["color name", "color name"],
-      "context": "where or why this trend is showing up"
+      "context": "where or why this trend is showing up",
+      "imageQuery": "short photo search phrase"
     }
   ]
 }`;
@@ -144,7 +149,9 @@ export async function fetchFashionTrends(region: TrendsRegion): Promise<TrendsRe
   }
 
   const text = await callGeminiApi(apiKey, buildTrendsPrompt(region));
-  return parseTrendsResponse(text, region);
+  const parsed = parseTrendsResponse(text, region);
+  const trends = await enrichTrendsWithImages(parsed.trends, REGION_LABEL[region]);
+  return { ...parsed, trends };
 }
 
 export async function fetchStaticTrends(region: TrendsRegion): Promise<TrendsResponse | null> {
@@ -152,7 +159,11 @@ export async function fetchStaticTrends(region: TrendsRegion): Promise<TrendsRes
     const response = await fetch(`/data/trends-${region}.json`, { cache: 'no-store' });
     if (!response.ok) return null;
     const parsed: unknown = await response.json();
-    return trendsResponseSchema.parse({ ...(parsed as object), source: 'build' });
+    const data = trendsResponseSchema.parse({ ...(parsed as object), source: 'build' });
+    const needsImages = data.trends.some((t) => !t.imageUrl);
+    if (!needsImages) return data;
+    const trends = await enrichTrendsWithImages(data.trends, REGION_LABEL[region]);
+    return { ...data, trends };
   } catch {
     return null;
   }
