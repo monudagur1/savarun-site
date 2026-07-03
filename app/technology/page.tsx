@@ -2,8 +2,10 @@ import type { Metadata } from 'next';
 import { Reveal } from '@/components/motion/Reveal';
 import { PageHero } from '@/components/layout/PageHero';
 import { SectionLabel } from '@/components/ui/SectionLabel';
+import { SiteImage } from '@/components/ui/SiteImage';
 import { TechStackSection } from '@/components/sections/TechStackSection';
 import { technologyPillars } from '@/lib/content';
+import { getSiteImage } from '@/lib/site-assets';
 import { pageMetadata } from '@/lib/metadata';
 
 export const metadata: Metadata = pageMetadata(
@@ -23,10 +25,13 @@ export default function TechnologyPage() {
         <div className="grid gap-6 lg:grid-cols-3">
           {technologyPillars.map((pillar, i) => (
             <Reveal key={pillar.title} delay={i * 0.1}>
-              <article className="tech-card h-full p-8">
-                <SectionLabel>{`0${i + 1}`}</SectionLabel>
-                <h2 className="mt-4 text-2xl font-medium">{pillar.title}</h2>
-                <p className="mt-4 text-sm leading-relaxed text-fg-secondary">{pillar.description}</p>
+              <article className="tech-card overflow-hidden">
+                <SiteImage asset={getSiteImage(pillar.image)} aspect="card" className="border-0 border-b" />
+                <div className="p-8">
+                  <SectionLabel>{`0${i + 1}`}</SectionLabel>
+                  <h2 className="mt-4 text-2xl font-medium">{pillar.title}</h2>
+                  <p className="mt-4 text-sm leading-relaxed text-fg-secondary">{pillar.description}</p>
+                </div>
               </article>
             </Reveal>
           ))}

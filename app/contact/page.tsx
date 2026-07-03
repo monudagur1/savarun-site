@@ -1,9 +1,12 @@
 import type { Metadata } from 'next';
+import { Reveal } from '@/components/motion/Reveal';
 import { PageHero } from '@/components/layout/PageHero';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { WaitlistForm } from '@/components/forms/WaitlistForm';
 import { FAQSection } from '@/components/sections/FAQSection';
+import { SiteImage } from '@/components/ui/SiteImage';
 import { COMPANY } from '@/lib/constants';
+import { getSiteImage } from '@/lib/site-assets';
 import { pageMetadata } from '@/lib/metadata';
 
 export const metadata: Metadata = pageMetadata(
@@ -19,6 +22,11 @@ export default function ContactPage() {
         title="Stay in touch"
         description="Join the waitlist for launch updates, or send us a message. We will respond when our team is available."
       />
+      <section className="px-[5vw] pb-8">
+        <Reveal className="mx-auto max-w-6xl">
+          <SiteImage asset={getSiteImage('homeProductPreview')} aspect="wide" />
+        </Reveal>
+      </section>
       <section className="px-[5vw] py-16">
         <div className="mx-auto grid max-w-6xl gap-16 lg:grid-cols-2">
           <div>

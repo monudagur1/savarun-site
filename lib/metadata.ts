@@ -22,11 +22,13 @@ export const baseMetadata: Metadata = {
     title: defaultTitle,
     description: PRODUCT.description,
     url: SITE_URL,
+    images: [{ url: '/images/og-image.svg', width: 1200, height: 630, alt: defaultTitle }],
   },
   twitter: {
     card: 'summary_large_image',
     title: defaultTitle,
     description: `${PRODUCT.status}. ${PRODUCT.description}`,
+    images: ['/images/og-image.svg'],
   },
   robots: { index: true, follow: true },
   applicationName: PRODUCT.name,

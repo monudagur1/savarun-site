@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#FFFFFF"/>
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(0,0,0,0.05)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <circle cx="980" cy="120" r="180" stroke="#D4D4D8" stroke-width="1" fill="none"/>
+  <circle cx="980" cy="120" r="120" stroke="#D4D4D8" stroke-width="1" stroke-dasharray="6 6" fill="none"/>
+  <text x="80" y="300" fill="#0A0A0A" font-family="ui-monospace, monospace" font-size="96" letter-spacing="8">SAVARUN</text>
+  <text x="84" y="360" fill="#2563EB" font-family="ui-monospace, monospace" font-size="22" letter-spacing="6">FASHION INTELLIGENCE</text>
+  <text x="84" y="420" fill="#52525B" font-family="system-ui, sans-serif" font-size="28">Your wardrobe, scored and curated by AI.</text>
+  <rect x="80" y="470" width="220" height="48" fill="#0A0A0A"/>
+  <text x="108" y="501" fill="#FFFFFF" font-family="ui-monospace, monospace" font-size="14" letter-spacing="3">COMING SOON</text>
+</svg>

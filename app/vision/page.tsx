@@ -2,8 +2,9 @@ import type { Metadata } from 'next';
 import { GsapScrollBlock } from '@/components/motion/GsapScrollBlock';
 import { Reveal } from '@/components/motion/Reveal';
 import { PageHero } from '@/components/layout/PageHero';
-import { PlaceholderAsset } from '@/components/ui/PlaceholderAsset';
+import { SiteImage } from '@/components/ui/SiteImage';
 import { CTASection } from '@/components/sections/CTASection';
+import { getSiteImage } from '@/lib/site-assets';
 import { pageMetadata } from '@/lib/metadata';
 
 export const metadata: Metadata = pageMetadata(
@@ -27,6 +28,9 @@ export default function VisionPage() {
         description="SAVARUN will treat getting dressed as a skill you can sharpen — not a performance you have to guess."
       />
       <section className="px-[5vw] py-16">
+        <Reveal className="mb-16">
+          <SiteImage asset={getSiteImage('visionHero')} aspect="hero" className="mx-auto max-w-2xl" />
+        </Reveal>
         <GsapScrollBlock className="prose-page mx-auto space-y-10">
           {manifesto.map((line) => (
             <p key={line} data-gsap-item className="text-lg leading-relaxed text-fg-secondary">
@@ -34,9 +38,6 @@ export default function VisionPage() {
             </p>
           ))}
         </GsapScrollBlock>
-        <Reveal className="mt-16">
-          <PlaceholderAsset label="Founder or product narrative photography — needs real asset before launch" aspect="hero" />
-        </Reveal>
       </section>
       <CTASection />
     </>
