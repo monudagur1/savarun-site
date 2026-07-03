@@ -4,7 +4,8 @@ const envSchema = z.object({
   NEXT_PUBLIC_SITE_URL: z.string().url().default('https://www.savarun.com'),
   NEXT_PUBLIC_WAITLIST_ENDPOINT: z
     .string()
-    .default('[WAITLIST_API_ENDPOINT]'),
+    .optional()
+    .transform((v) => (v && v.trim() !== '' ? v : '[WAITLIST_API_ENDPOINT]')),
 });
 
 export const env = envSchema.parse({
