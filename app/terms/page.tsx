@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { PageHero } from '@/components/layout/PageHero';
-import { COMPANY, FOOTER_LINE } from '@/lib/constants';
+import { COMPANY, COMPANY_DETAILS_LINE, FOOTER_LINE } from '@/lib/constants';
 import { pageMetadata } from '@/lib/metadata';
 
 export const metadata: Metadata = pageMetadata(
@@ -15,7 +15,7 @@ export default function TermsPage() {
       <section className="px-[5vw] py-16">
         <div className="prose-page mx-auto max-w-3xl">
           <p className="text-sm text-fg-muted">{FOOTER_LINE}</p>
-          <p className="text-sm text-fg-muted">Registered address: {COMPANY.registeredAddress}</p>
+          <p className="text-sm text-fg-muted">{COMPANY_DETAILS_LINE}</p>
 
           <h2 className="pt-8 text-xl text-fg">Agreement</h2>
           <p>
@@ -42,7 +42,13 @@ export default function TermsPage() {
           </p>
 
           <h2 className="pt-8 text-xl text-fg">Contact</h2>
-          <p>Questions about these terms: {COMPANY.contactEmail}.</p>
+          <p>
+            Questions about these terms:{' '}
+            <a href={`mailto:${COMPANY.contactEmail}`} className="underline hover:text-fg">
+              {COMPANY.contactEmail}
+            </a>
+            .
+          </p>
         </div>
       </section>
     </>

@@ -30,7 +30,9 @@ export default function ContactPage() {
             <h2 className="text-xl font-light">Send a message</h2>
             <p className="mt-2 text-sm text-fg-secondary">For partnerships, press, or general inquiries.</p>
             <ContactForm className="mt-8 glass-panel p-8" />
-            <p className="mt-6 text-xs text-fg-muted">{COMPANY.contactEmail}</p>
+            <a href={`mailto:${COMPANY.contactEmail}`} className="mt-6 inline-block text-sm text-fg-secondary hover:text-fg">
+              {COMPANY.contactEmail}
+            </a>
           </div>
         </div>
       </section>

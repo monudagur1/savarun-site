@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { COMPANY, FOOTER_LINE, PRODUCT, ROUTES } from '@/lib/constants';
+import { COMPANY, COMPANY_DETAILS_LINE, FOOTER_LINE, PRODUCT, ROUTES } from '@/lib/constants';
 import { navItems } from '@/lib/content';
 
 export function Footer() {
@@ -11,9 +11,7 @@ export function Footer() {
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-fg-secondary">
             {FOOTER_LINE}
           </p>
-          <p className="mt-4 text-xs text-fg-muted">
-            CIN: {COMPANY.cin} · GSTIN: {COMPANY.gstin}
-          </p>
+          <p className="mt-4 text-xs text-fg-muted">{COMPANY_DETAILS_LINE}</p>
         </div>
 
         <div>
@@ -36,13 +34,15 @@ export function Footer() {
             <a href={COMPANY.corporateUrl} className="hover:text-fg" target="_blank" rel="noopener noreferrer">
               Corporate site
             </a>
-            <span className="pt-2">{COMPANY.contactEmail}</span>
+            <a href={`mailto:${COMPANY.contactEmail}`} className="pt-2 hover:text-fg">
+              {COMPANY.contactEmail}
+            </a>
           </div>
         </div>
       </div>
 
       <p className="mx-auto mt-16 max-w-[1400px] text-xs text-fg-muted">
-        © {new Date().getFullYear()} {PRODUCT.name}. {COMPANY.registeredAddress}
+        © {new Date().getFullYear()} {PRODUCT.name}. {COMPANY.legalName}.
       </p>
     </footer>
   );

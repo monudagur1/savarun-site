@@ -4,11 +4,10 @@ export const COMPANY = {
   legalName: 'SAWARUN TECH PRIVATE LIMITED',
   productName: 'SAVARUN',
   corporateUrl: 'https://www.savarun.in',
-  cin: '[CIN_NUMBER]',
-  gstin: '[GSTIN_NUMBER]',
-  contactEmail: '[CONTACT_EMAIL]',
-  registeredAddress: '[REGISTERED_ADDRESS]',
+  contactEmail: 'admin@savarun.com',
 } as const;
+
+export const COMPANY_DETAILS_LINE = 'Company registration details available on request.';
 
 export const PRODUCT = {
   name: 'SAVARUN',
