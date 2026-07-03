@@ -19,7 +19,7 @@ export default function TrendsPage() {
       <section className="px-[5vw] py-16">
         <div className="mx-auto max-w-6xl">
           <div className="mb-8 border border-border bg-bg-secondary p-4 text-center font-mono text-xs uppercase tracking-[0.2em] text-fg-secondary">
-            Live AI demo · Google Gemini Flash · Not verified editorial data
+            Live AI demo · Gemini 2.5 / 3.5 Flash · Not verified editorial data
           </div>
           <FashionTrendsDemo />
         </div>

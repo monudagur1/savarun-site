@@ -11,13 +11,20 @@ export const fashionTrendSchema = z.object({
 export const trendsResponseSchema = z.object({
   region: z.enum(['India', 'Global']),
   trends: z.array(fashionTrendSchema).min(4).max(8),
+  generatedAt: z.string().optional(),
+  source: z.enum(['live', 'build']).optional(),
 });
 
 export type FashionTrend = z.infer<typeof fashionTrendSchema>;
 export type TrendsResponse = z.infer<typeof trendsResponseSchema>;
 export type TrendsRegion = 'india' | 'global';
 
-export const GEMINI_MODEL = 'gemini-2.0-flash';
+/** gemini-2.0-flash was shut down Jun 2026 — try current Flash models in order */
+export const GEMINI_MODELS = [
+  'gemini-2.5-flash',
+  'gemini-3.5-flash',
+  'gemini-1.5-flash',
+] as const;
 
 const REGION_LABEL: Record<TrendsRegion, 'India' | 'Global'> = {
   india: 'India',
@@ -30,26 +37,11 @@ export function getGeminiApiKey(): string | null {
   return key;
 }
 
-export async function fetchFashionTrends(region: TrendsRegion): Promise<TrendsResponse> {
-  const apiKey = getGeminiApiKey();
-  if (!apiKey) {
-    throw new Error('GEMINI_KEY_MISSING');
-  }
-
-  const { GoogleGenerativeAI } = await import('@google/generative-ai');
-  const genAI = new GoogleGenerativeAI(apiKey);
-  const model = genAI.getGenerativeModel({
-    model: GEMINI_MODEL,
-    generationConfig: {
-      responseMimeType: 'application/json',
-      temperature: 0.7,
-    },
-  });
-
+export function buildTrendsPrompt(region: TrendsRegion): string {
   const regionLabel = REGION_LABEL[region];
   const year = new Date().getFullYear();
 
-  const prompt = `You are assisting a fashion intelligence product demo for SAVARUN.
+  return `You are assisting a fashion intelligence product demo for SAVARUN.
 
 Generate illustrative fashion trend summaries for ${regionLabel} as of ${year}. These are for a technology demo — not verified editorial or retail data.
 
@@ -74,11 +66,96 @@ Return ONLY valid JSON in this shape:
     }
   ]
 }`;
+}
 
-  const result = await model.generateContent(prompt);
-  const text = result.response.text();
+interface GeminiApiResponse {
+  candidates?: Array<{
+    content?: { parts?: Array<{ text?: string }> };
+  }>;
+  error?: { message?: string };
+}
+
+export class GeminiApiError extends Error {
+  constructor(
+    message: string,
+    public readonly status?: number,
+  ) {
+    super(message);
+    this.name = 'GeminiApiError';
+  }
+}
+
+export async function callGeminiApi(apiKey: string, prompt: string): Promise<string> {
+  let lastError = 'Gemini request failed';
+
+  for (const model of GEMINI_MODELS) {
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-goog-api-key': apiKey,
+        },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+          generationConfig: {
+            responseMimeType: 'application/json',
+            temperature: 0.7,
+          },
+        }),
+      },
+    );
+
+    const data = (await response.json()) as GeminiApiResponse;
+
+    if (!response.ok) {
+      lastError = data.error?.message ?? `HTTP ${response.status} on ${model}`;
+      continue;
+    }
+
+    const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
+    if (!text) {
+      lastError = `Empty response from ${model}`;
+      continue;
+    }
+
+    return text;
+  }
+
+  throw new GeminiApiError(lastError);
+}
+
+export function parseTrendsResponse(text: string, region: TrendsRegion): TrendsResponse {
   const parsed: unknown = JSON.parse(text);
-  return trendsResponseSchema.parse(parsed);
+  const data = trendsResponseSchema.parse(parsed);
+  return {
+    ...data,
+    region: REGION_LABEL[region],
+    generatedAt: new Date().toISOString(),
+    source: 'live',
+  };
+}
+
+export async function fetchFashionTrends(region: TrendsRegion): Promise<TrendsResponse> {
+  const apiKey = getGeminiApiKey();
+  if (!apiKey) {
+    throw new Error('GEMINI_KEY_MISSING');
+  }
+
+  const text = await callGeminiApi(apiKey, buildTrendsPrompt(region));
+  return parseTrendsResponse(text, region);
+}
+
+export async function fetchStaticTrends(region: TrendsRegion): Promise<TrendsResponse | null> {
+  try {
+    const response = await fetch(`/data/trends-${region}.json`, { cache: 'no-store' });
+    if (!response.ok) return null;
+    const parsed: unknown = await response.json();
+    return trendsResponseSchema.parse({ ...(parsed as object), source: 'build' });
+  } catch {
+    return null;
+  }
 }
 
 const CACHE_TTL_MS = 30 * 60 * 1000;
