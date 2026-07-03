@@ -1,19 +1,26 @@
 import type { Metadata } from 'next';
-import { PageShell } from '@/components/layout/PageShell';
+import Link from 'next/link';
+import { PageHero } from '@/components/layout/PageHero';
 import { pageMetadata } from '@/lib/metadata';
 
 export const metadata: Metadata = pageMetadata(
   'Careers',
-  'SAVARUN careers — not actively hiring. Check back soon.',
+  'SAVARUN careers — not hiring yet. Check back at launch.',
 );
 
 export default function CareersPage() {
   return (
-    <PageShell
-      label="Careers"
-      title="Not hiring right now"
-      description="No invented job listings. This page will update when SAWARUN TECH PRIVATE LIMITED is actively recruiting."
-      phase={1}
-    />
+    <>
+      <PageHero
+        label="Careers"
+        title="Not hiring yet"
+        description="SAVARUN is in early development. We are not accepting applications at this time. Follow our journey and join the waitlist for launch news."
+      />
+      <section className="px-[5vw] py-16 text-center">
+        <Link href="/contact/" className="btn-primary inline-flex">
+          Join waitlist instead
+        </Link>
+      </section>
+    </>
   );
 }

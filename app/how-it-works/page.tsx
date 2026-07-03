@@ -1,19 +1,24 @@
 import type { Metadata } from 'next';
-import { PageShell } from '@/components/layout/PageShell';
+import { PageHero } from '@/components/layout/PageHero';
+import { HowItWorksSection } from '@/components/sections/HowItWorksSection';
+import { CTASection } from '@/components/sections/CTASection';
 import { pageMetadata } from '@/lib/metadata';
 
 export const metadata: Metadata = pageMetadata(
   'How It Works',
-  'How SAVARUN will guide you from wardrobe import to scored outfits.',
+  'Three steps to a smarter wardrobe with SAVARUN — import, organize, and score.',
 );
 
 export default function HowItWorksPage() {
   return (
-    <PageShell
-      label="How It Works"
-      title="Three steps to smarter style"
-      description="Import → organize → score. Interactive scroll storytelling arrives in Phase 5."
-      phase={1}
-    />
+    <>
+      <PageHero
+        label="How it works"
+        title="From camera roll to confident outfits"
+        description="SAVARUN will turn the photos you already have into a living wardrobe system."
+      />
+      <HowItWorksSection />
+      <CTASection />
+    </>
   );
 }

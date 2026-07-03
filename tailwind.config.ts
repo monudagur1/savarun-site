@@ -22,6 +22,15 @@ const config: Config = {
         sans: ['var(--font-geist-sans)', 'Inter', 'system-ui', 'sans-serif'],
         mono: ['var(--font-geist-mono)', 'IBM Plex Mono', 'monospace'],
       },
+      animation: {
+        ticker: 'ticker 30s linear infinite',
+      },
+      keyframes: {
+        ticker: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+      },
     },
   },
   plugins: [],
