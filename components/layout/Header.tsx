@@ -24,11 +24,11 @@ export function Header() {
     <header
       className={cn(
         'fixed inset-x-0 top-0 z-[200] transition-all duration-500',
-        scrolled ? 'border-b border-border bg-bg/90 py-4 backdrop-blur-xl' : 'py-8',
+        scrolled ? 'border-b border-border bg-bg/95 py-4 backdrop-blur-xl' : 'py-8',
       )}
     >
       <div className="mx-auto flex max-w-[1400px] items-center justify-between gap-6 px-[5vw]">
-        <Link href={ROUTES.home} className="font-sans text-xl tracking-[0.24em] text-fg">
+        <Link href={ROUTES.home} className="font-mono text-xl tracking-[0.18em] text-fg">
           {PRODUCT.name}
         </Link>
 
@@ -38,7 +38,7 @@ export function Header() {
               key={item.href}
               href={item.href}
               className={cn(
-                'text-[0.68rem] uppercase tracking-[0.22em] transition-colors',
+                'font-mono text-[0.68rem] uppercase tracking-[0.2em] transition-colors',
                 pathname === item.href ? 'text-fg' : 'text-fg-muted hover:text-fg',
               )}
             >
@@ -75,7 +75,7 @@ export function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="overflow-hidden border-t border-border bg-bg/95 backdrop-blur-xl lg:hidden"
+            className="overflow-hidden border-t border-border bg-bg backdrop-blur-xl lg:hidden"
           >
             <div className="flex flex-col gap-5 px-[5vw] py-8">
               {navItems.map((item) => (

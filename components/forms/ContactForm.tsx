@@ -56,7 +56,7 @@ export function ContactForm({ className }: ContactFormProps) {
         aria-label="Message"
         required
         rows={5}
-        className="w-full border border-border bg-transparent px-4 py-3 text-sm text-fg placeholder:text-fg-muted focus:border-fg/40 focus:outline-none"
+        className="w-full border border-border bg-bg px-4 py-3 font-mono text-sm text-fg placeholder:text-fg-muted focus:border-fg focus:outline-none"
       />
       {error && <p className="text-sm text-fg-secondary">{error}</p>}
       <Button type="submit" className="w-full justify-center">

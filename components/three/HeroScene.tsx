@@ -9,10 +9,10 @@ function MonochromeOrb() {
       <mesh scale={2.2}>
         <icosahedronGeometry args={[1, 3]} />
         <MeshDistortMaterial
-          color="#ffffff"
-          roughness={0.15}
-          metalness={0.85}
-          distort={0.3}
+          color="#0A0A0A"
+          roughness={0.2}
+          metalness={0.6}
+          distort={0.28}
           speed={1.2}
           wireframe
         />
@@ -29,7 +29,7 @@ export function HeroScene() {
       gl={{ antialias: true, alpha: true }}
       className="h-full w-full"
     >
-      <color attach="background" args={['#000000']} />
+      <color attach="background" args={['#FFFFFF']} />
       <ambientLight intensity={0.25} />
       <directionalLight position={[4, 4, 4]} intensity={0.6} />
       <MonochromeOrb />

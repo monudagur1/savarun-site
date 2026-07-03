@@ -1,9 +1,12 @@
 import type { Metadata } from 'next';
 import { CTASection } from '@/components/sections/CTASection';
+import { AppPlatformsSection } from '@/components/sections/AppPlatformsSection';
+import { FAQSection } from '@/components/sections/FAQSection';
 import { FeaturesWithPlaceholder } from '@/components/sections/FeaturesGrid';
 import { HowItWorksSection } from '@/components/sections/HowItWorksSection';
 import { HomeHero } from '@/components/sections/HomeHero';
 import { StatusTicker } from '@/components/sections/StatusTicker';
+import { TechStackSection } from '@/components/sections/TechStackSection';
 import { PRODUCT } from '@/lib/constants';
 
 export const metadata: Metadata = {
@@ -18,8 +21,11 @@ export default function HomePage() {
       <HomeHero />
       <StatusTicker />
       <FeaturesWithPlaceholder />
+      <AppPlatformsSection />
       <HowItWorksSection />
+      <TechStackSection />
       <CTASection />
+      <FAQSection />
       <section className="border-t border-border px-[5vw] py-16 text-center">
         <p className="font-mono text-xs uppercase tracking-[0.35em] text-fg-muted">{PRODUCT.tagline}</p>
       </section>

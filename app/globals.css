@@ -11,15 +11,21 @@
     @apply bg-bg font-sans text-fg antialiased;
   }
 
+  h1,
+  h2,
+  h3 {
+    @apply font-sans tracking-tight;
+  }
+
   ::selection {
-    background: #ffffff;
-    color: #000000;
+    background: #0a0a0a;
+    color: #ffffff;
   }
 }
 
 @layer components {
   .skip-link {
-    @apply absolute -top-full left-4 z-[9999] bg-fg px-4 py-3 text-xs uppercase tracking-widest text-bg;
+    @apply absolute -top-full left-4 z-[9999] bg-fg px-4 py-3 font-mono text-xs uppercase tracking-widest text-bg;
   }
 
   .skip-link:focus {
@@ -27,15 +33,19 @@
   }
 
   .display-title {
-    @apply text-[clamp(3.5rem,12vw,9rem)] font-light leading-[0.92] tracking-[0.08em];
+    @apply font-sans text-[clamp(3.5rem,12vw,9rem)] font-semibold leading-[0.92] tracking-[-0.03em];
   }
 
   .display-subtitle {
-    @apply text-[clamp(2rem,5vw,3.5rem)] font-light leading-tight tracking-wide;
+    @apply font-sans text-[clamp(2rem,5vw,3.5rem)] font-medium leading-tight tracking-[-0.02em];
   }
 
   .section-label {
-    @apply font-mono text-xs uppercase tracking-[0.35em] text-fg-muted;
+    @apply font-mono text-[0.68rem] uppercase tracking-[0.28em] text-fg-muted;
+  }
+
+  .tech-kicker {
+    @apply font-mono text-xs uppercase tracking-[0.32em] text-accent;
   }
 
   .glass-panel {
@@ -43,7 +53,11 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 border border-fg bg-fg px-8 py-4 text-[0.72rem] font-medium uppercase tracking-[0.28em] text-bg transition-all duration-300 hover:bg-fg-secondary;
+    @apply inline-flex items-center justify-center gap-2 border border-fg bg-fg px-8 py-4 font-mono text-[0.68rem] font-medium uppercase tracking-[0.24em] text-bg transition-all duration-300 hover:bg-fg-secondary;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 border border-border bg-transparent px-8 py-4 font-mono text-[0.68rem] uppercase tracking-[0.24em] text-fg transition-all duration-300 hover:border-fg hover:bg-bg-secondary;
   }
 
   .page-hero {
@@ -51,18 +65,22 @@
   }
 
   .prose-page {
-    @apply max-w-3xl space-y-6 text-fg-secondary leading-relaxed;
+    @apply max-w-3xl space-y-6 leading-relaxed text-fg-secondary;
   }
 
   .placeholder-surface {
-    @apply border border-dashed border-border bg-glass text-fg-muted;
+    @apply border border-dashed border-border bg-bg-secondary text-fg-muted;
   }
 
   .bg-grid {
     background-image:
-      linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-    background-size: 48px 48px;
+      linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .tech-card {
+    @apply border border-border bg-surface transition-colors hover:border-fg/20;
   }
 }
 

@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { GeistMono } from 'geist/font/mono';
-import { GeistSans } from 'geist/font/sans';
+import { jetbrainsMono, spaceGrotesk } from '@/lib/fonts';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
 import { AppProviders } from '@/components/providers/AppProviders';
@@ -12,7 +11,7 @@ import './globals.css';
 export const metadata: Metadata = baseMetadata;
 
 export const viewport: Viewport = {
-  themeColor: '#000000',
+  themeColor: '#FFFFFF',
   width: 'device-width',
   initialScale: 1,
 };
@@ -42,7 +41,7 @@ const productSchema = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
       <head>
         <JsonLd data={organizationSchema} />
         <JsonLd data={productSchema} />

@@ -10,10 +10,10 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variants: Record<ButtonVariant, string> = {
   primary:
-    'bg-fg text-bg hover:bg-fg-secondary border border-fg',
+    'bg-fg text-bg hover:bg-fg-secondary border border-fg font-mono',
   outline:
-    'bg-transparent text-fg border border-border hover:border-fg/40 hover:bg-glass',
-  ghost: 'bg-transparent text-fg-secondary hover:text-fg',
+    'bg-transparent text-fg border border-border hover:border-fg hover:bg-bg-secondary font-mono',
+  ghost: 'bg-transparent text-fg-secondary hover:text-fg font-mono',
 };
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(

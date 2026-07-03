@@ -14,7 +14,7 @@ export function FeaturesGrid() {
       <div className="grid gap-6 lg:grid-cols-3">
         {features.map((f, i) => (
           <Reveal key={f.title} delay={i * 0.1}>
-            <article className="glass-panel h-full p-8">
+            <article className="tech-card h-full p-8">
               <span className="font-mono text-xs text-fg-muted">{f.index}</span>
               <h3 className="mt-4 text-2xl font-light tracking-wide">{f.title}</h3>
               <p className="mt-4 text-sm leading-relaxed text-fg-secondary">{f.description}</p>

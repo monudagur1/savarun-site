@@ -7,7 +7,7 @@ export function Footer() {
     <footer className="border-t border-border px-[5vw] py-20">
       <div className="mx-auto grid max-w-[1400px] gap-12 lg:grid-cols-[1.2fr_1fr_1fr]">
         <div>
-          <p className="text-2xl tracking-[0.2em]">{PRODUCT.name}</p>
+          <p className="font-mono text-2xl tracking-[0.12em]">{PRODUCT.name}</p>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-fg-secondary">
             {FOOTER_LINE}
           </p>
