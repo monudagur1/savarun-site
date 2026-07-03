@@ -1,3 +1,4 @@
+import { z } from 'zod';
 import { enrichTrendsWithImages } from './trend-images';
 
 export const fashionTrendSchema = z.object({
