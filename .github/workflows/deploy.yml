@@ -15,19 +15,40 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm install
+
+      - run: npm run build
+        env:
+          NEXT_PUBLIC_SITE_URL: https://www.savarun.com
+          NEXT_PUBLIC_WAITLIST_ENDPOINT: ${{ secrets.NEXT_PUBLIC_WAITLIST_ENDPOINT }}
+
+      - name: Prepare static output
+        run: |
+          cp public/CNAME out/CNAME
+          touch out/.nojekyll
+
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Upload site
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
-
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
