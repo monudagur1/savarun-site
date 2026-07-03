@@ -1,20 +1,29 @@
 import type { Metadata } from 'next';
-import { PageShell } from '@/components/layout/PageShell';
+import { PageHero } from '@/components/layout/PageHero';
+import { SimulatedDemo } from '@/components/sections/SimulatedDemo';
 import { pageMetadata } from '@/lib/metadata';
 
 export const metadata: Metadata = pageMetadata(
-  'Interactive Demo',
-  'Simulated preview of SAVARUN — not connected to live AI.',
+  'Demo',
+  'Simulated preview of SAVARUN fit scoring — not connected to live AI.',
 );
 
 export default function DemoPage() {
   return (
-    <PageShell
-      label="Simulated preview"
-      title="Interactive Demo"
-      description="This will be a clearly labeled simulated experience — not a live tool connected to any real model. Phase 6."
-      phase={1}
-      banner="Not connected to live AI"
-    />
+    <>
+      <PageHero
+        label="Interactive demo"
+        title="Simulated fit scoring"
+        description="This preview illustrates how scoring could feel in the app. It is not connected to any live AI model, backend, or your personal data."
+      />
+      <section className="px-[5vw] py-16">
+        <div className="mx-auto max-w-3xl">
+          <div className="mb-8 border border-border bg-bg-secondary p-4 text-center text-sm text-fg-secondary">
+            Simulated preview only — not live AI
+          </div>
+          <SimulatedDemo />
+        </div>
+      </section>
+    </>
   );
 }

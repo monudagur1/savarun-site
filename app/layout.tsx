@@ -1,6 +1,9 @@
 import type { Metadata, Viewport } from 'next';
 import { GeistMono } from 'geist/font/mono';
 import { GeistSans } from 'geist/font/sans';
+import { Footer } from '@/components/layout/Footer';
+import { Header } from '@/components/layout/Header';
+import { AppProviders } from '@/components/providers/AppProviders';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { baseMetadata } from '@/lib/metadata';
 import { COMPANY, PRODUCT, SITE_URL } from '@/lib/constants';
@@ -48,7 +51,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a href="#main-content" className="skip-link">
           Skip to content
         </a>
-        <main id="main-content">{children}</main>
+        <AppProviders>
+          <Header />
+          <main id="main-content">{children}</main>
+          <Footer />
+        </AppProviders>
       </body>
     </html>
   );

@@ -26,12 +26,43 @@
     @apply top-4;
   }
 
-  .phase-label {
-    @apply text-xs font-mono uppercase tracking-[0.3em] text-fg-muted;
+  .display-title {
+    @apply text-[clamp(3.5rem,12vw,9rem)] font-light leading-[0.92] tracking-[0.08em];
+  }
+
+  .display-subtitle {
+    @apply text-[clamp(2rem,5vw,3.5rem)] font-light leading-tight tracking-wide;
+  }
+
+  .section-label {
+    @apply font-mono text-xs uppercase tracking-[0.35em] text-fg-muted;
+  }
+
+  .glass-panel {
+    @apply border border-border bg-glass backdrop-blur-sm;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 border border-fg bg-fg px-8 py-4 text-[0.72rem] font-medium uppercase tracking-[0.28em] text-bg transition-all duration-300 hover:bg-fg-secondary;
+  }
+
+  .page-hero {
+    @apply border-b border-border px-[5vw] pb-16 pt-36;
+  }
+
+  .prose-page {
+    @apply max-w-3xl space-y-6 text-fg-secondary leading-relaxed;
   }
 
   .placeholder-surface {
     @apply border border-dashed border-border bg-glass text-fg-muted;
+  }
+
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
   }
 }
 

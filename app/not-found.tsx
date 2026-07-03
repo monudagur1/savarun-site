@@ -1,17 +1,15 @@
 import Link from 'next/link';
-import { PageShell } from '@/components/layout/PageShell';
+import { PageHero } from '@/components/layout/PageHero';
 
 export default function NotFound() {
   return (
-    <PageShell
-      label="404"
-      title="Page not found"
-      description="The page you're looking for doesn't exist."
-      phase={1}
-    >
-      <Link href="/" className="mt-8 inline-block text-sm uppercase tracking-widest text-fg-secondary underline">
-        Return home
-      </Link>
-    </PageShell>
+    <>
+      <PageHero label="404" title="Page not found" description="The page you're looking for doesn't exist." />
+      <section className="px-[5vw] py-16 text-center">
+        <Link href="/" className="btn-primary inline-flex">
+          Return home
+        </Link>
+      </section>
+    </>
   );
 }
