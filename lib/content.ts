@@ -4,6 +4,7 @@ export const navItems = [
   { label: 'How It Works', href: '/how-it-works/' },
   { label: 'Features', href: '/features/' },
   { label: 'Demo', href: '/demo/' },
+  { label: 'Trends', href: '/trends/' },
   { label: 'AI', href: '/ai-fashion-intelligence/' },
   { label: 'Blog', href: '/blog/' },
   { label: 'Contact', href: '/contact/' },
@@ -72,7 +73,7 @@ export const faqItems = [
   {
     question: 'Is the demo on this site real AI?',
     answer:
-      'No. The Interactive Demo is a simulated preview — it is not connected to any live model or backend.',
+      'The fit-scoring demo is simulated. The Fashion Trends page uses Google Gemini Flash for illustrative AI-generated summaries — not verified live fashion feeds or retail data.',
   },
   {
     question: 'Will my photos be private?',

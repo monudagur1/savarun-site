@@ -27,6 +27,7 @@ export const ROUTES = {
   howItWorks: '/how-it-works/',
   features: '/features/',
   demo: '/demo/',
+  trends: '/trends/',
   aiFashionIntelligence: '/ai-fashion-intelligence/',
   blog: '/blog/',
   careers: '/careers/',

@@ -30,6 +30,7 @@ jobs:
         env:
           NEXT_PUBLIC_SITE_URL: https://www.savarun.com
           NEXT_PUBLIC_WAITLIST_ENDPOINT: ${{ secrets.NEXT_PUBLIC_WAITLIST_ENDPOINT }}
+          NEXT_PUBLIC_GEMINI_API_KEY: ${{ secrets.NEXT_PUBLIC_GEMINI_API_KEY }}
 
       - name: Prepare static output
         run: |

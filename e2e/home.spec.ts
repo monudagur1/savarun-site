@@ -10,7 +10,9 @@ test('demo page shows simulated disclaimer', async ({ page }) => {
   await expect(page.getByText('Simulated preview only')).toBeVisible();
 });
 
-test('contact page has waitlist form', async ({ page }) => {
-  await page.goto('/contact/');
-  await expect(page.getByLabel('Email address')).toBeVisible();
+test('trends page shows Gemini demo disclosure', async ({ page }) => {
+  await page.goto('/trends/');
+  await expect(page.getByText('Live AI demo')).toBeVisible();
+  await expect(page.getByRole('button', { name: 'India' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Global' })).toBeVisible();
 });
